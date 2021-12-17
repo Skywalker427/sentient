@@ -2,6 +2,8 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 import preprocessing as pp
+import nltk
+nltk.download('stopwords')
 import os
 
 app = Flask(__name__)
