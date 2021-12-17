@@ -9,7 +9,7 @@ model = pickle.load(open('LR_BOW_Classifier.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html',prediction_text="")
 
 @app.route('/predict',methods=['POST'])
 def predict():
