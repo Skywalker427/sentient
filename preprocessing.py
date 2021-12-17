@@ -2,6 +2,7 @@ import numpy as np
 #Removing HTML
 from bs4 import BeautifulSoup
 import nltk
+nltk.download('all')
 import pickle
 cv = pickle.load(open('vectorizer.pkl', 'rb'))
 
