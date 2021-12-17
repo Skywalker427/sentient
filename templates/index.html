@@ -52,7 +52,7 @@
       <br />
 
       <div>
-        {% if prediction_text[-8:] == "Negative" %}
+        {% if "Negative" in prediction_text %}
         <span style="color: red"> {{ prediction_text }}</span>
         {% else %}
         <span style="color: green"> {{ prediction_text }}</span>
