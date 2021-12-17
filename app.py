@@ -2,6 +2,7 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 import preprocessing as pp
+import os
 
 app = Flask(__name__)
 model = pickle.load(open('LR_BOW_Classifier.pkl', 'rb'))
@@ -61,4 +62,5 @@ def predict_api():
     return jsonify(output)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
