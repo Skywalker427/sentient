@@ -4,6 +4,7 @@ import pickle
 import preprocessing as pp
 import nltk
 nltk.download('wordnet')
+nltk.download('stopwords')
 import os
 
 app = Flask(__name__)
@@ -36,6 +37,9 @@ def predict():
     text_bow_transformed = pp.bow_transform(text_nostopwords)
 
     pred = model.predict(text_bow_transformed)
+    pred_confidence = model.predict_proba(text_bow_transformed)
+    pred_confidence= max(pred_confidence[0]) * 100
+    pred_confidence = "{:.2f}".format(pred_confidence)
     sentiment = ""
     if(pred==0):
         sentiment = "Negative"
@@ -43,7 +47,7 @@ def predict():
         sentiment = "Positive"
     
  
-    prediction_text='Sentiment expressed: {}'.format(sentiment) 
+    prediction_text='Sentiment expressed: {} with confidence {}%'.format(sentiment,pred_confidence) 
 
 
 
