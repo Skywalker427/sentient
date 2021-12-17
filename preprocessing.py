@@ -2,7 +2,7 @@ import numpy as np
 #Removing HTML
 from bs4 import BeautifulSoup
 import nltk
-nltk.download('all')
+nltk.download('stopwords')
 import pickle
 cv = pickle.load(open('vectorizer.pkl', 'rb'))
 
