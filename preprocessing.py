@@ -3,6 +3,7 @@ import numpy as np
 from bs4 import BeautifulSoup
 import nltk
 nltk.download('wordnet')
+nltk.download('stopwords')
 
 import pickle
 cv = pickle.load(open('vectorizer.pkl', 'rb'))
