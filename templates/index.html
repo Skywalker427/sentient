@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ML API</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="login">
+      <h1>Predict Sentiment Analysis</h1>
+
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}" method="post">
+        <input
+          type="text"
+          name="input_text"
+          placeholder="Input Text"
+          required="required"
+          style="width: 100%; height: 100px"
+        />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">
+          Predict Sentiment
+        </button>
+      </form>
+
+      <br />
+      <br />
+
+      <div>
+        {% if prediction_text[-8:] == "Negative" %}
+        <span style="color: red"> {{ prediction_text }}</span>
+        {% else %}
+        <span style="color: green"> {{ prediction_text }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
